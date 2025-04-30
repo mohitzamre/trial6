@@ -19,5 +19,13 @@ pipeline {
                 sh 'echo "hello dev"'
             }
         }
+        stage('create pull request'){
+            when {branch 'dev'}
+            steps{
+                sh 'gh create --B main --H dev --title "PR"  --body "auto pr"'
+            }
+        }
+        
+        
     }
 }
